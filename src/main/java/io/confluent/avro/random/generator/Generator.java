@@ -478,6 +478,10 @@ public class Generator {
         }
       }
       option = optionBuilder.build();
+    } else if (schema.getType() == Schema.Type.UNION) {
+      for (Schema field : schema.getTypes()) {
+        option = wrapOption(field, option);
+      }
     }
     return option;
   }
